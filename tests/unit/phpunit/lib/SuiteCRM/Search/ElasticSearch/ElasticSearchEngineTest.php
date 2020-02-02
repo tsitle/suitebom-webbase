@@ -74,7 +74,7 @@ class ElasticSearchEngineTest extends \SuiteCRM\Search\SearchTestAbstract
                 'size' => $size,
                 'query' => [
                     'query_string' => [
-                        'query' => $searchString,
+                        'query' => $searchString . "*",
                         'analyzer' => 'standard',
                         'fields' => ['name.*^5', '_all'],
                         'default_operator' => 'OR',
@@ -105,7 +105,7 @@ class ElasticSearchEngineTest extends \SuiteCRM\Search\SearchTestAbstract
                 'size' => $size,
                 'query' => [
                     'query_string' => [
-                        'query' => $searchString,
+                        'query' => $searchString . "*",
                         'analyzer' => 'standard',
                         'fields' => ['name.*^5', '_all'],
                         'default_operator' => 'OR',
