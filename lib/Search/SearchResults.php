@@ -168,7 +168,11 @@ class SearchResults
     {
         if ($fieldDef['type'] == 'relate' && isset($fieldDef['link']) && isset($fieldDef['id_name']) && $fieldDef['id_name']) {
             $relId = $this->getRelatedId($obj, $fieldDef['id_name'], $fieldDef['link']);
-            $obj->{$fieldDef['name']} = $this->getLink($obj->{$fieldDef['name']}, $fieldDef['module'], $relId, 'DetailView');
+            if (! empty($relId)) {
+                $obj->{$fieldDef['name']} = $this->getLink($obj->{$fieldDef['name']}, $fieldDef['module'], $relId, 'DetailView');
+            } else {
+                LoggerManager::getLogger()->warn('Unresolved related ID for field: '. $fieldDef['id_name']);
+            }
         } elseif ($fieldDef['name'] == 'name') {
             $obj->{$fieldDef['name']} = $this->getLink($obj->{$fieldDef['name']}, $obj->module_name, $obj->id, 'DetailView');
         }
@@ -190,10 +194,17 @@ class SearchResults
             $link2 = $obj->$link;
             $link2Focus = $link2->getFocus();
             $relId = $link2Focus->$relField;
+            if (is_object($relId)) {
+                if (method_exists($relId, "getFocus")) {
+                    $relId = $relId->getFocus()->id;
+                } else {
+                    $relId = null;
+                }
+            }
         } elseif (isset($obj->$relField)) {
             $relId = $obj->$relField;
         } else {
-            LoggerManager::getLogger()->warn('Unresolved related ID for field: '. $relField);
+            $relId = null;
         }
         return $relId;
     }

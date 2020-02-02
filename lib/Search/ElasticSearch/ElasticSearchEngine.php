@@ -118,6 +118,28 @@ class ElasticSearchEngine extends SearchEngine
      */
     private function createSearchParams($query)
     {
+        $searchStr = $query->getSearchString();
+        // wildcard character required for Elasticsearch
+        $wildcardBe = "*";
+        // override frontend wildcard character
+        if (isset($GLOBALS['sugar_config']['search_wildcard_char'])) {
+            $wildcardFe = $GLOBALS['sugar_config']['search_wildcard_char'];
+            if (strlen($wildcardFe) == 1 && $wildcardFe !== $wildcardBe) {
+                $searchStr = str_replace($wildcardFe, $wildcardBe, $searchStr);
+            }
+        }
+        // add wildcard at the beginning of the search string
+        if (isset($GLOBALS['sugar_config']['search_wildcard_infront']) &&
+                $GLOBALS['sugar_config']['search_wildcard_infront'] == true) {
+            if (substr($searchStr, 0, 1) != $wildcardBe) {
+                $searchStr = $wildcardBe . $searchStr;
+            }
+        }
+        // add wildcard at the end of search string
+        if (substr($searchStr, -1) != $wildcardBe) {
+            $searchStr .= $wildcardBe;
+        }
+
         $params = [
             'index' => $this->index,
             'body' => [
@@ -126,7 +148,7 @@ class ElasticSearchEngine extends SearchEngine
                 'size' => $query->getSize(),
                 'query' => [
                     'query_string' => [
-                        'query' => $query->getSearchString(),
+                        'query' => $searchStr,
                         'fields' => ['name.*^5', '_all'],
                         'analyzer' => 'standard',
                         'default_operator' => 'OR',
