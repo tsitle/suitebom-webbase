@@ -325,6 +325,9 @@ function sugar_chmod($filename, $mode = null)
  */
 function sugar_chown($filename, $user = '')
 {
+    if (strpos($filename, 'upload://') === 0) {
+        return true;
+    }
     if (!is_windows()) {
         if (strlen($user)) {
             return chown($filename, $user);
@@ -354,6 +357,9 @@ function sugar_chown($filename, $user = '')
  */
 function sugar_chgrp($filename, $group = '')
 {
+    if (strpos($filename, 'upload://') === 0) {
+        return true;
+    }
     if (!is_windows()) {
         if (!empty($group)) {
             return chgrp($filename, $group);
