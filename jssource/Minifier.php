@@ -186,6 +186,8 @@ class Minifier
                 continue;
             }
 
+            $doCont = false;
+
             switch ($this->a) {
                 // new lines
                 case "\n":
@@ -237,13 +239,17 @@ class Minifier
                             // check for some regex that breaks stuff
                             if ($this->a == '/' && ($this->b == '\'' || $this->b == '"')) {
                                 $this->saveRegex();
-                                continue;
+                                $doCont = true;
+                            } else {
+                                echo $this->a;
+                                $this->saveString();
                             }
-
-                            echo $this->a;
-                            $this->saveString();
                             break;
                     }
+            }
+
+            if ($doCont) {
+                continue;
             }
 
             // do reg check of doom
