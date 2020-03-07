@@ -108,15 +108,15 @@ class ModuleBuilderFieldsCest
         // Click save
         $I->click(['name' => 'fsavebtn']);
 
-        $moduleBuilder->closePopupSuccess();
-
         // Add to layout viewlayoutsbtn
         $moduleBuilder->selectModule(\Page\ModuleFields::$PACKAGE_NAME, \Page\ModuleFields::$NAME);
         // View Layouts button
         $I->waitForElementVisible(['name' => 'viewlayoutsbtn']);
         $I->click(['name' => 'viewlayoutsbtn']);
 
-        $moduleBuilder->closePopupSuccess();
+        // Wait until confirmation window has disappeared
+        $I->waitForElementNotVisible('#sugarMsgWindow_c');
+        $I->waitForElementNotVisible('#sugarMsgWindow_mask');
 
         // Click Edit View
         $I->waitForElementVisible('.bodywrapper');
@@ -137,7 +137,6 @@ class ModuleBuilderFieldsCest
 
         $I->checkOption('#syncCheckbox');
         $I->click('Save');
-        $moduleBuilder->closePopupSuccess();
     }
 
 
@@ -189,15 +188,15 @@ class ModuleBuilderFieldsCest
         // Click save
         $I->click(['name' => 'fsavebtn']);
 
-        $moduleBuilder->closePopupSuccess();
-
         // Add to layout viewlayoutsbtn
         $moduleBuilder->selectModule(\Page\ModuleFields::$PACKAGE_NAME, \Page\ModuleFields::$NAME);
         // View Layouts button
         $I->waitForElementVisible(['name' => 'viewlayoutsbtn']);
         $I->click(['name' => 'viewlayoutsbtn']);
 
-        $moduleBuilder->closePopupSuccess();
+        // Wait until confirmation window has disappeared
+        $I->waitForElementNotVisible('#sugarMsgWindow_c');
+        $I->waitForElementNotVisible('#sugarMsgWindow_mask');
 
         // Click Edit View
         $I->waitForElementVisible('.bodywrapper');
@@ -218,7 +217,6 @@ class ModuleBuilderFieldsCest
 
         $I->checkOption('#syncCheckbox');
         $I->click('Save');
-        $moduleBuilder->closePopupSuccess();
     }
 
     /**
