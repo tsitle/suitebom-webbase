@@ -304,7 +304,7 @@ if (!empty($sugar_config['lock_homepage']) && $sugar_config['lock_homepage'] == 
 $sugar_smarty->assign('colNum', (int)$numCols);
 $sugar_smarty->assign('sugarVersion', $sugar_version);
 $sugar_smarty->assign('currentLanguage', $GLOBALS['current_language']);
-$sugar_smarty->assign('serverUniqueKey', $GLOBALS['server_unique_key']);
+$sugar_smarty->assign('serverUniqueKey', isset($GLOBALS['server_unique_key']) ? $GLOBALS['server_unique_key'] : "");
 $sugar_smarty->assign('imagePath', $GLOBALS['image_path']);
 
 $sugar_smarty->assign('maxCount', empty($sugar_config['max_dashlets_homepage']) ? 15 : $sugar_config['max_dashlets_homepage']);

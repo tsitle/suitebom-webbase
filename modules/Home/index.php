@@ -281,7 +281,7 @@ $dashboardActions = $GLOBALS['app_strings']['LBL_SUITE_DASHBOARD_ACTIONS'];
 $sugar_smarty->assign('sugarVersion', $sugar_version);
 $sugar_smarty->assign('sugarFlavor', $sugar_flavor);
 $sugar_smarty->assign('currentLanguage', $GLOBALS['current_language']);
-$sugar_smarty->assign('serverUniqueKey', $GLOBALS['server_unique_key']);
+$sugar_smarty->assign('serverUniqueKey', isset($GLOBALS['server_unique_key']) ? $GLOBALS['server_unique_key'] : "");
 $sugar_smarty->assign('imagePath', $GLOBALS['image_path']);
 
 $sugar_smarty->assign('maxCount', empty($sugar_config['max_dashlets_homepage']) ? 15 : $sugar_config['max_dashlets_homepage']);
