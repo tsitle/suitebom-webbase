@@ -294,7 +294,7 @@ function smarty_function_sugar_button($params, &$smarty)
     $type = $params['id'];
     $location = (empty($params['location'])) ? "" : "_".$params['location'];
 
-    $formName = $params['form_id'];
+    $formName = (isset($params['form_id']) ? $params['form_id'] : "_no_form_id_");
 
     if (!is_array($type)) {
         $module = $params['module'];
