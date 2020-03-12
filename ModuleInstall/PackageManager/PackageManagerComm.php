@@ -38,7 +38,7 @@
  * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
 
-require_once('include/nusoap/nusoap.php');
+//require_once('include/nusoap/nusoap.php');
 require_once('ModuleInstall/PackageManager/PackageManagerDownloader.php');
 
 define("HTTPS_URL", "https://depot.sugarcrm.com/depot/SugarDepotSoap.php");
@@ -53,12 +53,14 @@ class PackageManagerComm
      */
     public function initialize($login = true)
     {
+        /*
         if (empty($GLOBALS['SugarDepot'])) {
             $GLOBALS['log']->debug('USING HTTPS TO CONNECT TO HEARTBEAT');
             $soap_client = new nusoapclient(HTTPS_URL, false);
             $ping = $soap_client->call('sugarPing', array());
             $GLOBALS['SugarDepot'] = $soap_client;
         }
+        */
         //if we do not have a session, then try to login
         if ($login && empty($_SESSION['SugarDepotSessionID'])) {
             PackageManagerComm::login();

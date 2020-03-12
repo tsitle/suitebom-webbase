@@ -161,6 +161,7 @@ function check_now($send_usage_info=true, $get_request_data=false, $response_dat
             $info = getSystemInfo($send_usage_info);
         }
 
+        /*
         require_once('include/nusoap/nusoap.php');
 
         $GLOBALS['log']->debug('USING HTTPS TO CONNECT TO HEARTBEAT');
@@ -176,6 +177,7 @@ function check_now($send_usage_info=true, $get_request_data=false, $response_dat
                 );
             }
         }
+        */
 
 
         $key = '4829482749329';
