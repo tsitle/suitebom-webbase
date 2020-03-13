@@ -250,6 +250,8 @@ function getEditFieldHTML($module, $fieldname, $aow_field, $view = 'EditView', $
         if ($value) {
             $relateIdField = $fieldlist[$fieldname]['id_name'];
             $rel_value =  $bean->$relateIdField;
+        } else {
+            $rel_value = "";
         }
         $fieldlist[$fieldlist[$fieldname]['id_name']]['value'] = $rel_value;
         $fieldlist[$fieldname]['value'] = $value;
@@ -494,9 +496,9 @@ function formatDisplayValue($bean, $value, $vardef, $method = "save")
             $fieldName = $vardef['rname'];
         }
 
-        if ($vardef['ext2']) {
+        if (isset($vardef['ext2']) && $vardef['ext2']) {
             $value .= getFieldValueFromModule($fieldName, $vardef['ext2'], $record);
-        } elseif (!empty($vardef['rname']) || $vardef['name'] == "related_doc_name") {
+        } elseif ((isset($vardef['rname']) && !empty($vardef['rname'])) || $vardef['name'] == "related_doc_name") {
             $value .= getFieldValueFromModule($fieldName, $vardef['module'], $record);
         } else {
             $value .= $name;
