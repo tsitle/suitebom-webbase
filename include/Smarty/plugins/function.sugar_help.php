@@ -75,12 +75,13 @@ function smarty_function_sugar_help($params, &$smarty)
 	//append any additional parameters.
 	$click  = "return SUGAR.util.showHelpTips(this,'$text'";
 
-	if (count( $params) > 1){
-
-			$click .=",'".$params['myPos']."','".$params['atPos']."'";
+	if (count($params) > 1) {
+        $click .= ",'" .
+                (isset($params['myPos']) ? $params['myPos'] : "") . "', " .
+                "'" . (isset($params['atPos']) ? $params['atPos'] : "") . "'";
 	}
     $helpImage = SugarThemeRegistry::current()->getImageURL('helpInline.png');
-	$click .= " );" ;
+	$click .= " );";
     $alt_tag = $GLOBALS['app_strings']['LBL_ALT_INFO'];
     return <<<EOHTML
 <img border="0"
