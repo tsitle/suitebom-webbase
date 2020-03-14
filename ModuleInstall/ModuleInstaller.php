@@ -946,8 +946,8 @@ class ModuleInstaller
     // Non-standard - needs special rebuild call
     public function install_languages()
     {
-        $languages = array();
         if (isset($this->installdefs['language'])) {
+            $languages = $modules = array();
             $this->log(translate('LBL_MI_IN_LANG'));
             foreach ($this->installdefs['language'] as $packs) {
                 $modules[]=$packs['to_module'];
@@ -983,8 +983,8 @@ class ModuleInstaller
     // Non-standard, needs special rebuild
     public function uninstall_languages()
     {
-        $languages = array();
         if (isset($this->installdefs['language'])) {
+            $languages = $modules = array();
             $this->log(translate('LBL_MI_UN_LANG'));
             foreach ($this->installdefs['language'] as $packs) {
                 $modules[]=$packs['to_module'];
@@ -1048,6 +1048,7 @@ class ModuleInstaller
     public function enable_languages()
     {
         if (isset($this->installdefs['language'])) {
+            $languages = $modules = array();
             foreach ($this->installdefs['language'] as $item) {
                 $from = str_replace('<basepath>', $this->base_dir, $item['from']);
                 $GLOBALS['log']->debug("Enabling Language {$item['language']}... from $from for " .$item['to_module']);
