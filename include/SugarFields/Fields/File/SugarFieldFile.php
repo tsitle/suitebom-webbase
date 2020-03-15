@@ -155,14 +155,20 @@ class SugarFieldFile extends SugarFieldBase
 
         if ($move) {
             $upload_file->final_move($bean->id);
-            $docType = $prefix . isset($vardef['docType']);
-            $upload_file->upload_doc($bean, $bean->id, isset($params[$docType]), $bean->$field, $upload_file->mime_type);
+            $docType = $prefix . (isset($vardef['docType']) ? $vardef['docType'] : "");
+            $upload_file->upload_doc(
+                $bean,
+                $bean->id,
+                $docType,
+                $bean->$field,
+                $upload_file->mime_type
+            );
         } elseif (! empty($old_id)) {
             // It's a duplicate, I think
 
-            if (empty($params[$prefix . $vardef['docUrl'] ])) {
+            if (! isset($vardef['docUrl']) || empty($params[$prefix . $vardef['docUrl'] ])) {
                 $upload_file->duplicate_file($old_id, $bean->id, $bean->$field);
-            } else {
+            } elseif (isset($vardef['docType']) && isset($params[$prefix . $field . '_old_doctype'])) {
                 $docType = $vardef['docType'];
                 $bean->$docType = $params[$prefix . $field . '_old_doctype'];
             }
@@ -171,7 +177,9 @@ class SugarFieldFile extends SugarFieldBase
             $displayParams = array();
             $this->fillInOptions($vardef, $displayParams);
             
-            if (isset($params[$prefix . $vardef['docId']])
+            if (isset($vardef['docId'])
+                 && isset($vardef['docType'])
+                 && isset($params[$prefix . $vardef['docId']])
                  && ! empty($params[$prefix . $vardef['docId']])
                  && isset($params[$prefix . $vardef['docType']])
                  && ! empty($params[$prefix . $vardef['docType']])
