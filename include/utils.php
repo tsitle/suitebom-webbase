@@ -138,8 +138,8 @@ function make_sugar_config(&$sugar_config)
         'default_module' => empty($default_module) ? 'Home' : $default_module,
         'default_password' => empty($default_password) ? '' : $default_password,
         'default_permissions' => array(
-            'dir_mode' => 02770,
-            'file_mode' => 0755,
+            'dir_mode' => 02775,
+            'file_mode' => 0664,
             'chown' => '',
             'chgrp' => '',
         ),
@@ -321,8 +321,8 @@ function get_sugar_config_defaults()
         'default_module' => 'Home',
         'default_password' => '',
         'default_permissions' => array(
-            'dir_mode' => 02770,
-            'file_mode' => 0755,
+            'dir_mode' => 02775,
+            'file_mode' => 0664,
             'user' => '',
             'group' => '',
         ),
