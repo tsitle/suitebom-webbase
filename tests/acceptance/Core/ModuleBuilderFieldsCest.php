@@ -81,10 +81,8 @@ class ModuleBuilderFieldsCest
         $I->waitForElementVisible(['name' => 'viewfieldsbtn']);
         $I->click(['name' => 'viewfieldsbtn']);
 
-        // Close popup
-        $I->waitForElementVisible('#sugarMsgWindow_mask');
-        $I->waitForText('This operation is completed successfully', 30, '#sugarMsgWindow_c');
-        $I->click('.container-close');
+        // Wait until confirmation window has disappeared
+        $moduleBuilder->waitUntilPopupSuccessDisappeared();
 
         // Add field button
         $I->waitForElementVisible('[name="addfieldbtn"]');
@@ -115,8 +113,7 @@ class ModuleBuilderFieldsCest
         $I->click(['name' => 'viewlayoutsbtn']);
 
         // Wait until confirmation window has disappeared
-        $I->waitForElementNotVisible('#sugarMsgWindow_c');
-        $I->waitForElementNotVisible('#sugarMsgWindow_mask');
+        $moduleBuilder->waitUntilPopupSuccessDisappeared();
 
         // Click Edit View
         $I->waitForElementVisible('.bodywrapper');
@@ -161,10 +158,8 @@ class ModuleBuilderFieldsCest
         $I->waitForElementVisible(['name' => 'viewfieldsbtn']);
         $I->click(['name' => 'viewfieldsbtn']);
 
-        // Close popup
-        $I->waitForElementVisible('#sugarMsgWindow_mask');
-        $I->waitForText('This operation is completed successfully', 30, '#sugarMsgWindow_c');
-        $I->click('.container-close');
+        // Wait until confirmation window has disappeared
+        $moduleBuilder->waitUntilPopupSuccessDisappeared();
 
         // Add field button
         $I->waitForElementVisible('[name="addfieldbtn"]');
@@ -195,8 +190,7 @@ class ModuleBuilderFieldsCest
         $I->click(['name' => 'viewlayoutsbtn']);
 
         // Wait until confirmation window has disappeared
-        $I->waitForElementNotVisible('#sugarMsgWindow_c');
-        $I->waitForElementNotVisible('#sugarMsgWindow_mask');
+        $moduleBuilder->waitUntilPopupSuccessDisappeared();
 
         // Click Edit View
         $I->waitForElementVisible('.bodywrapper');

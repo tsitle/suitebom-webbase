@@ -34,8 +34,7 @@ class ModuleBuilder extends Administration
             $I->click('Save');
 
             // Wait until confirmation window has disappeared
-            $I->waitForElementNotVisible('#sugarMsgWindow_c');
-            $I->waitForElementNotVisible('#sugarMsgWindow_mask');
+            $this->waitUntilPopupSuccessDisappeared();
 
             // Create new module
             $I->click('New Module');
@@ -114,6 +113,16 @@ class ModuleBuilder extends Administration
         $I->waitForElementVisible(['name' => 'author']);
         $I->click($moduleName, '#package_modules');
         $I->waitForElementVisible(['name' => 'savebtn']);
+    }
+
+    /**
+     * Wait until confirmation window has disappeared
+     */
+    public function waitUntilPopupSuccessDisappeared()
+    {
+        $I = $this;
+        $I->waitForElementNotVisible('#sugarMsgWindow_c');
+        $I->waitForElementNotVisible('#sugarMsgWindow_mask');
     }
 
     /**
