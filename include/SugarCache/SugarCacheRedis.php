@@ -75,8 +75,11 @@ class SugarCacheRedis extends SugarCacheAbstract
             return false;
         }
         
-        if (extension_loaded("redis")
+        if (isset($GLOBALS['sugar_config']['external_cache_disabled_redis'])
+                && $GLOBALS['sugar_config']['external_cache_disabled_redis'] !== null
+                && extension_loaded("redis")
                 && empty($GLOBALS['sugar_config']['external_cache_disabled_redis'])
+                && ! empty(SugarConfig::getInstance()->get('external_cache.redis.host', $this->_host))
                 && $this->_getRedisObject()) {
             return true;
         }
