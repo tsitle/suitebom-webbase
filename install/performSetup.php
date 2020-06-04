@@ -503,7 +503,9 @@ require_once('modules/Home/dashlets.php');
 if (isset($_SESSION['installation_scenarios'])) {
     foreach ($_SESSION['installation_scenarios'] as $scenario) {
         //If the item is not in $_SESSION['scenarios'], then unset them as they are not required
-        if (!in_array($scenario['key'], $_SESSION['scenarios'])) {
+        if (is_array($scenario) && isset($scenario['key']) &&
+                isset($_SESSION['scenarios']) && is_array($_SESSION['scenarios']) &&
+                ! in_array($scenario['key'], $_SESSION['scenarios'])) {
             foreach ($scenario['modules'] as $module) {
                 if (($removeKey = array_search($module, $enabled_tabs)) !== false) {
                     unset($enabled_tabs[$removeKey]);
@@ -529,7 +531,7 @@ if (isset($_SESSION['installation_scenarios'])) {
 }
 
 //Have a 'core' options, with accounts / contacts if no other scenario is selected
-if (!is_null($_SESSION['scenarios'])) {
+if (isset($_SESSION['scenarios']) && ! is_null($_SESSION['scenarios'])) {
     unset($GLOBALS['tabStructure']['LBL_TABGROUP_DEFAULT']);
 }
 
