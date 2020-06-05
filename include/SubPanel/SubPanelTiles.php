@@ -243,6 +243,8 @@ class SubPanelTiles
             $rel->load_relationship_meta();
         }
 
+        $module_sub_panels = null;
+
         foreach ($tabs as $t => $tab) {
             // load meta definition of the sub-panel.
             $thisPanel = $this->subpanel_definitions->load_subpanel($tab);
@@ -379,6 +381,10 @@ class SubPanelTiles
 
 
             array_push($tab_names, $tab);
+        }
+
+        if ($module_sub_panels === null || ! is_array($module_sub_panels)) {
+            return "";  // abort
         }
 
         $tab_names = '["' . implode('","', $tab_names) . '"]';
