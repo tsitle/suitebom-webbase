@@ -288,7 +288,7 @@ if ($upgradeStepFile == 'end') {
     //}
 }
 
-if(!$_REQUEST['additional_step']) {
+if (! (isset($_REQUEST['additional_step']) && $_REQUEST['additional_step'])) {
     require('modules/UpgradeWizard/'.$upgradeStepFile.'.php');
 }
 
