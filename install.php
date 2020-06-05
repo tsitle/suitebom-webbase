@@ -364,10 +364,10 @@ $workflow[] = 'installConfig.php';
 if ($_SERVER['SERVER_PORT']=='80') {
     $web_root = $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'];
 } else {
-    $web_root = $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['PHP_SELF'];
+    $web_root = $_SERVER['SERVER_NAME'].(intval($_SERVER['SERVER_PORT']) !== 443 ? ":".$_SERVER['SERVER_PORT'] : "").$_SERVER['PHP_SELF'];
 }
 $web_root = str_replace("/install.php", "", $web_root);
-$web_root = "http://$web_root";
+$web_root = "http" . (intval($_SERVER['SERVER_PORT']) === 443 ? "s" : "") . "://" . $web_root;
 
 if (!isset($_SESSION['oc_install']) || $_SESSION['oc_install'] == false) {
     //$workflow[] = 'siteConfig_a.php';
