@@ -758,6 +758,7 @@ EOQ;
             create_writable_dir(sugar_cached('modules'));
             create_writable_dir(sugar_cached('layout'));
             create_writable_dir(sugar_cached('pdf'));
+            create_writable_dir(sugar_cached('upload'));
             create_writable_dir(sugar_cached('upload/import'));
             create_writable_dir(sugar_cached('xml'));
             create_writable_dir(sugar_cached('include/javascript'));
