@@ -84,11 +84,12 @@ class Configurator
                 }
             }
             if (isset($this->config[$key]) || in_array($key, $this->allow_undefined)) {
-                if (strcmp((string)$value, 'true') == 0) {
-                    $value = true;
-                }
-                if (strcmp((string)$value, 'false') == 0) {
-                    $value = false;
+                if (! is_array($value)) {
+                    if (strcmp((string)$value, 'true') == 0) {
+                        $value = true;
+                    } elseif (strcmp((string)$value, 'false') == 0) {
+                        $value = false;
+                    }
                 }
                 $this->config[$key] = $value;
             } else {
