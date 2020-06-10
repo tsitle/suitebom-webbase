@@ -234,7 +234,7 @@ advanced tab content goes here
             <!-- phone (version 1) -->
             <div class="col-xs-12 col-sm-8 detail-view-field " type="name" field="name">
                 <!-- simple hidden start -->
-                {$NUM_GRP_SEP}
+                {$USER_NUM_GRP_SEP}
                 <!-- simple hidden finish -->
             </div>
         </div>
@@ -245,13 +245,11 @@ advanced tab content goes here
             <!-- DIV inside - colspan != 3 -->
             <div class="col-xs-12 col-sm-4 label col-1-label">
                 <!-- LABEL -->
-                {$MOD.LBL_NUMBER_GROUPING_SEP|strip_semicolon}
             </div>
             <!-- /DIV inside  -->
             <!-- phone (version 1) -->
-            <div class="col-xs-12 col-sm-8 detail-view-field ">
+            <div class="col-xs-12 col-sm-8">
                 <!-- simple hidden start -->
-                {$NUM_GRP_SEP}
                 <!-- simple hidden finish -->
             </div>
         </div>
@@ -266,7 +264,7 @@ advanced tab content goes here
             <!-- phone (version 1) -->
             <div class="col-xs-12 col-sm-8 detail-view-field " type="name" field="name">
                 <!-- simple hidden start -->
-                {$MOD.LBL_DECIMAL_SEP_TEXT}
+                {$USER_DEC_SEP}
                 <!-- simple hidden finish -->
             </div>
         </div>

@@ -863,11 +863,11 @@ class User extends Person implements EmailInterface
             if (isset($_POST['default_currency_significant_digits'])) {
                 $this->setPreference('default_currency_significant_digits', $_POST['default_currency_significant_digits'], 0, 'global');
             }
-            if (isset($_POST['num_grp_sep'])) {
-                $this->setPreference('num_grp_sep', $_POST['num_grp_sep'], 0, 'global');
+            if (isset($_POST['user_num_grp_sep'])) {
+                $this->setPreference('user_num_grp_sep', $_POST['user_num_grp_sep'], 0, 'global');
             }
-            if (isset($_POST['dec_sep'])) {
-                $this->setPreference('dec_sep', $_POST['dec_sep'], 0, 'global');
+            if (isset($_POST['user_dec_sep'])) {
+                $this->setPreference('user_dec_sep', $_POST['user_dec_sep'], 0, 'global');
             }
             if (isset($_POST['fdow'])) {
                 $this->setPreference('fdow', $_POST['fdow'], 0, 'global');

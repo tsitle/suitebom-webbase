@@ -734,10 +734,16 @@ class UserViewHelper
         $this->ss->assign('sigDigits', $sigDigits);
         $this->ss->assign('CURRENCY_SIG_DIGITS', $significantDigits);
 
-        $num_grp_sep = $this->bean->getPreference('num_grp_sep');
-        $dec_sep = $this->bean->getPreference('dec_sep');
-        $this->ss->assign("NUM_GRP_SEP", (empty($num_grp_sep) ? $GLOBALS['sugar_config']['default_number_grouping_seperator'] : $num_grp_sep));
-        $this->ss->assign("DEC_SEP", (empty($dec_sep) ? $GLOBALS['sugar_config']['default_decimal_seperator'] : $dec_sep));
+        $user_num_grp_sep = $this->bean->getPreference('user_num_grp_sep');
+        if (empty($user_num_grp_sep)) {
+            $user_num_grp_sep = $GLOBALS['sugar_config']['default_number_grouping_seperator'];
+        }
+        $user_dec_sep = $this->bean->getPreference('user_dec_sep');
+        if (empty($user_dec_sep)) {
+            $user_dec_sep = $GLOBALS['sugar_config']['default_decimal_seperator'];
+        }
+        $this->ss->assign("USER_NUM_GRP_SEP", $user_num_grp_sep);
+        $this->ss->assign("USER_DEC_SEP", $user_dec_sep);
         $this->ss->assign('getNumberJs', $locale->getNumberJs());
 
         //// Name display format

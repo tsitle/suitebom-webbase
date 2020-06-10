@@ -412,7 +412,7 @@ class="yui-navset detailview_tabs"
                             <span>{$MOD.LBL_NUMBER_GROUPING_SEP|strip_semicolon}:</span>
                         </td>
                         <td>
-                            <span>{$NUM_GRP_SEP}&nbsp;</span>
+                            <span>{$USER_NUM_GRP_SEP}&nbsp;</span>
                         </td>
                         <td>
                             <span>{$MOD.LBL_NUMBER_GROUPING_SEP_TEXT}&nbsp;</span>
@@ -423,7 +423,7 @@ class="yui-navset detailview_tabs"
                             <span>{$MOD.LBL_DECIMAL_SEP|strip_semicolon}:</span>
                         </td>
                         <td>
-                            <span>{$DEC_SEP}&nbsp;</span>
+                            <span>{$USER_DEC_SEP}&nbsp;</span>
                         </td>
                         <td>
                             <span></span>{$MOD.LBL_DECIMAL_SEP_TEXT}&nbsp;</td>

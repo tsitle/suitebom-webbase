@@ -665,8 +665,8 @@ class Localization
 
             function setSigDigits() {
                 var sym = document.getElementById('symbol').value;
-                var thou = document.getElementById('default_number_grouping_seperator').value;
-                var dec = document.getElementById('default_decimal_seperator').value;
+                var thou = document.getElementById('user_number_grouping_seperator').value;
+                var dec = document.getElementById('user_decimal_seperator').value;
                 var precision = document.getElementById('sigDigits').value;
                 //umber(n, num_grp_sep, dec_sep, round, precision)
                 var newNumber = sym + formatNumber(exampleDigits, thou, dec, precision, precision);

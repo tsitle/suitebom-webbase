@@ -227,7 +227,7 @@
                     <slot>{$MOD.LBL_EXPORT_DELIMITER}:</slot>&nbsp;{sugar_help text=$MOD.LBL_EXPORT_DELIMITER_DESC }
                 </td>
                 <td>
-                    <slot><input type="text" tabindex='12' name="export_delimiter" value="{$EXPORT_DELIMITER}" size="5">
+                    <slot><input type="text" tabindex='12' name="export_delimiter" value="{$EXPORT_DELIMITER}" size="5" autocomplete='false'>
                     </slot>
                 </td>
                 <td scope="row" width="17%">
@@ -386,8 +386,9 @@
                     </slot>&nbsp;{sugar_help text=$MOD.LBL_NUMBER_GROUPING_SEP_TEXT }</td>
                 <td>
                     <slot>
-                        <input tabindex='14' name='num_grp_sep' id='default_number_grouping_seperator'
-                               type='text' maxlength='1' size='1' value='{$NUM_GRP_SEP}'
+                        <input tabindex='14' name='user_num_grp_sep' id='user_number_grouping_seperator'
+                               type='text' maxlength='1' size='1' value='{$USER_NUM_GRP_SEP}'
+                               autocomplete='false'
                                onkeydown='setSigDigits();' onkeyup='setSigDigits();'>
                     </slot>
                 </td>
@@ -404,8 +405,9 @@
                     <slot>{$MOD.LBL_DECIMAL_SEP}:</slot>&nbsp;{sugar_help text=$MOD.LBL_DECIMAL_SEP_TEXT }</td>
                 <td>
                     <slot>
-                        <input tabindex='14' name='dec_sep' id='default_decimal_seperator'
-                               type='text' maxlength='1' size='1' value='{$DEC_SEP}'
+                        <input tabindex='14' name='user_dec_sep' id='user_decimal_seperator'
+                               type='text' maxlength='1' size='1' value='{$USER_DEC_SEP}'
+                               autocomplete='false'
                                onkeydown='setSigDigits();' onkeyup='setSigDigits();'>
                     </slot>
                 </td>
@@ -422,6 +424,7 @@
                     <slot>{$MOD.LBL_PUBLISH_KEY}:</slot>&nbsp;{sugar_help text=$MOD.LBL_CHOOSE_A_KEY}</td>
                 <td width="20%">
                     <slot><input id='calendar_publish_key' name='calendar_publish_key' tabindex='17' size='25'
+                                 autocomplete='false'
                                  maxlength='36' type="text" value="{$CALENDAR_PUBLISH_KEY}"></slot>
                 </td>
                 <td width="63%">

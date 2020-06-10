@@ -232,13 +232,13 @@
                         <tr>
                             <td width="17%" scope="row" nowrap="nowrap"><span>{$MOD.LBL_DECIMAL_SEP}:</span>&nbsp;{sugar_help text=$MOD.LBL_DECIMAL_SEP_TEXT }</td>
                             <td ><span>
-                                    <input tabindex='14' name='dec_sep' id='default_decimal_seperator'
-                                           type='text' maxlength='1' size='1' value='{$DEC_SEP}'
+                                    <input tabindex='14' name='user_dec_sep' id='user_decimal_seperator'
+                                           type='text' maxlength='1' size='1' value='{$USER_DEC_SEP}'
                                            onkeydown='setSigDigits();' onkeyup='setSigDigits();'>
                                 </span></td>
                             <td width="17%" scope="row" nowrap="nowrap"><span>{$MOD.LBL_NUMBER_GROUPING_SEP}:</span>&nbsp;{sugar_help text=$MOD.LBL_NUMBER_GROUPING_SEP_TEXT }</td>
-                            <td><input tabindex='14' name='num_grp_sep' id='default_number_grouping_seperator'
-                                       type='text' maxlength='1' size='1' value='{$NUM_GRP_SEP}'
+                            <td><input tabindex='14' name='user_num_grp_sep' id='user_number_grouping_seperator'
+                                       type='text' maxlength='1' size='1' value='{$USER_NUM_GRP_SEP}'
                                        onkeydown='setSigDigits();' onkeyup='setSigDigits();'></td>
                         </tr>
                         <tr>

@@ -154,6 +154,12 @@ class UserPreference extends SugarBean
         if ($name == 'email_link_type') {
             return $sugar_config['email_default_client'];
         }
+        if ($name == 'user_num_grp_sep' || $name == 'num_grp_sep') {
+            return $sugar_config['default_number_grouping_seperator'];
+        }
+        if ($name == 'user_dec_sep' || $name == 'dec_sep') {
+            return $sugar_config['default_decimal_seperator'];
+        }
     }
 
     /**
@@ -178,6 +184,12 @@ class UserPreference extends SugarBean
             if (!$user->loadPreferences($category)) {
                 $_SESSION[$user->user_name.'_PREFERENCES'][$category] = array();
             }
+        }
+
+        if ($name == 'num_grp_sep') {
+            $name = 'user_num_grp_sep';
+        } elseif ($name == 'dec_sep') {
+            $name = 'user_dec_sep';
         }
 
         // preferences changed or a new preference, save it to DB
