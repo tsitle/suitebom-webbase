@@ -1,3 +1,15 @@
+/silentInstall-input_config.php
+/silentInstall-wrapper.sh
+/silentInstall-wrapper-config.sh
+
+*.bak.php
+
+/config-dev.php
+
+/install/status.json
+
+# ------
+
 ## First part from https://github.com/github/gitignore/blob/master/SugarCRM.gitignore
 # Ignore custom .htaccess stuff.
 /.htaccess
